@@ -1,3 +1,6 @@
-.container{:style => "position: relative;"}
-	%h3
-		= t('Statistics')
+.container{:style => "position: absolute;"}
+%h3
+= t('Statistics')
+
+- content_for :content do
+  = @as_html
