@@ -4,11 +4,11 @@
 
 class StatisticsController < ApplicationController
 
-  respond_to :json
+  respond_to :html
   
   def statistics
     respond_to do |format|
-      format.json { render :json => StatisticsPresenter.new }
+      format.all { @css_framework = :bootstrap; render :template=>'publics/statistics', :layout => "application"}
     end
   end
   
