@@ -2,6 +2,26 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
-- content_for :content do
-  = t('statistics')
-  = @as_html
+- content_for :container_content do
+  %h2
+    = t('statistics')  
+  
+  %ul
+    %li
+      = @as_name
+    %li
+      = @as_network
+    %li
+      = @as_users
+    %li
+      = @as_active_users
+    %li
+      = @as_monthly_users
+    %li
+      = @as_posts
+    %li
+      = @as_comments
+    %li
+      = @as_version
+    %li
+      = @as_registrations
