@@ -47,7 +47,7 @@ en:
   _contacts: "Contacts"
   welcome: "Welcome!"
   _terms: "terms"
-  statistics: "Vive Augier :"
+  statistics: "Statistics :"
 
   #for reference translation, the real activerecord english transations are actually
   #in en-US, en-GB, and en-AU yml files
