@@ -32,7 +32,9 @@
        Active Users Monthly: #{@@result['active_users_monthly']}
        Local posts: #{@@result['local_posts']}
        Local comments: #{@@result['local_comments']}
-       
+       Version: #{@@result['version']}
+       Registrations open: #{@@result['registrations_open']}
+       Services: #{@@result['services']}
        "
       end
      
