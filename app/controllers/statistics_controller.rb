@@ -1,4 +1,4 @@
-	
+
 
     #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
     #   licensed under the Affero General Public License version 3 or later.  See
@@ -25,12 +25,16 @@
       end
      
       def as_html
-        "Name: #{@@result['name']}
+        "t('Name'): #{@@result['name']}
        Network: #{@@result['network']}
+       Total users: #{@@result['total_users']}
+       Active Users Half Year: #{@@result['active_users_halfyear']}
+       Active Users Monthly: #{@@result['active_users_monthly']}
+       Local posts: #{@@result['local_posts']}
+       Local comments: #{@@result['local_comments']}
+       
        "
       end
-     
-     
      
       def _statistics
         if AppConfig.privacy.statistics.user_counts?

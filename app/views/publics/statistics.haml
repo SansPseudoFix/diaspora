@@ -1,6 +1,16 @@
-.container{:style => "position: absolute;"}
-%h3
-= t('Statistics')
+-#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+-#   licensed under the Affero General Public License version 3 or later.  See
+-#   the COPYRIGHT file.
 
-- content_for :content do
-  = @as_html
+.bootstrap_header_padding
+
+.container
+  .row-fluid
+    .span12
+      #section_header
+        %h2
+
+  = t('Statistics')
+
+  - content_for :content do
+    = @as_html

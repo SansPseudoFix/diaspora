@@ -1365,3 +1365,6 @@ en:
       default: "The secret code did not match with the image"
       user: "The secret image and code were different"
       failed: "Human verification failed"
+
+  statistics: "Statistics"
+      
