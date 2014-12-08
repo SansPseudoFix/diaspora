@@ -49,7 +49,6 @@ class StatisticsController < ApplicationController
    #   Configuration::KNOWN_SERVICES.each do |service, options|
    #     @@result[service.to_s] = AppConfig["services.#{service}.enable"]
    #   end
-   @@result
   end
  
   def local_posts
