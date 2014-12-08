@@ -22,47 +22,7 @@ class StatisticsController < ApplicationController
     format.all { @css_framework = :bootstrap; render :template=>'publics/statistics', :layout => "application"}
    end
   end
-  
-  def as_name(result)
-   "Name: #{result['name']}"
-  end
 
-  def as_network(result)
-   "Network: #{result['network']}"
-  end
-
-  def as_users(result)
-   "Total users: #{result['total_users']}"
-  end
-
-  def as_active_users(result)
-  	"Active Users Half Year: #{result['active_users_halfyear']}"
-  end
-
-  def as_monthly_users(result)
-  	"Active Users Monthly: #{result['active_users_monthly']}"
-  end
-
-  def as_posts(result)
-  	"Local posts: #{result['local_posts']}"
-  end
-
-  def as_comments(result)
-    "Local comments: #{result['local_comments']}"
-  end  
-  
-  def as_version(result)
-    "Version: #{result['version']}" 	
-  end 
-   
-  def as_registrations(result)
-   	"Registrations open: #{result['registrations_open']}"
-  end 
-  
-  def as_services(result)
-   "Services: #{result['services']}"
-  end
- 
   def datas
    @@result = {
     'name' => AppConfig.settings.pod_name,
