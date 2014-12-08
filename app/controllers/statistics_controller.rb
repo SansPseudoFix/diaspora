@@ -11,7 +11,7 @@ class StatisticsController < ApplicationController
    @as_name = @@result['name']
    @as_network = @@result['network']
    @as_users = @@result['total_users']
-   @as_active_users = @@esult['active_users_halfyear']
+   @as_active_users = @@result['active_users_halfyear']
    @as_monthly_users =  @@result['active_users_monthly']
    @as_posts = @@result['local_posts']
    @as_comments = @@result['local_comments']
