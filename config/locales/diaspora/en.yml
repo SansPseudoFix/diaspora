@@ -1366,3 +1366,14 @@ en:
       default: "The secret code did not match with the image"
       user: "The secret image and code were different"
       failed: "Human verification failed"
+  
+  statistics:
+    name: "Name: "
+    network: "Network: "
+    users: "Total users: "
+    active_users: "Active Users Half Year: "
+    monthly_users: "Active Users Monthly: "
+    posts: "Local posts: "
+    comments: "Local comments: "
+    version: "Version: "
+    registrations: "Registrations opened: "
