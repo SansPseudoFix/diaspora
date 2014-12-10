@@ -5,34 +5,53 @@
 = render template: "layouts/with_header"
 
 - content_for :container_content do
-  %h1
-    = t('_statistics')  
   
-  %ul
-    %li
-      = t('statistics.name')
+  .row-fluid
+    %h1
+      = t('_statistics')  
+      
+    .span-3
+      %h4
+        = t('statistics.name')
+      %br
       = @as_name
-    %li
-      = t('statistics.network')
+    .span-3
+      %h4
+        = t('statistics.network')
+      %br
       = @as_network
-    %li
-      = t('statistics.users')
+    .span-3
+      %h4
+        = t('statistics.users')
+      %br
       = @as_users
-    %li
-      = t('statistics.active_users')
+    .span-3
+      %h4
+        = t('statistics.active_users')
+      %br
       = @as_active_users
-    %li
-      = t('statistics.monthly_users')
+    .span-3
+      %h4
+        = t('statistics.monthly_users')
+      %br
       = @as_monthly_users
-    %li
-      = t('statistics.posts')
+    .span-3
+      %h4
+        = t('statistics.posts')
+      %br
       = @as_posts
-    %li
-      = t('statistics.comments')
+    .span-3
+      %h4
+        = t('statistics.comments')
+      %br
       = @as_comments
-    %li
-      = t('statistics.version')
+    .span-3
+      %h4
+        = t('statistics.version')
+      %br
       = @as_version
-    %li
-      = t('statistics.registrations')
+    .span-3
+      %h4
+        = t('statistics.registrations')
+      %br
       = @as_registrations
