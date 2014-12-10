@@ -4,7 +4,7 @@
  
 class StatisticsController < ApplicationController
  
-  respond_to :html, json
+  respond_to :html, :json
  
   def statistics
    self.datas
