@@ -3,14 +3,16 @@
 .page-statistics h4{
   margin: 0px;
   padding: 10px 20px;
-  background-color: #E6EFFB;
+  background-color: $background-grey;
 }
 
 .page-statistics .span-3 { 
   max-width: 20%;
-  height: 150px;
+  height: 100px;
   text-align: center;
   border: 1px solid $border-grey;
   margin-bottom: 10px;
   border-radius: 5px;
 }
+
+.page-statistics .span-3 .data{ margin-top: 15px; }
