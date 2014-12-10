@@ -4,14 +4,14 @@
  
 class StatisticsController < ApplicationController
  
-  respond_to :html, json
+  respond_to :html, :json
  
   def statistics
+   self.datas
    respond_to do |format|
     format.json { render :json => StatisticsPresenter.new }
     format.html
     {
-     self.datas
      @as_name = @@result['name']
      @as_network = @@result['network']
      @as_users = @@result['total_users']
