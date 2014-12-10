@@ -1,18 +1,22 @@
-.page-statistics h1{ text-align: center; }
+.page-statistics {
+  h1{ text-align: center; }
 
-.page-statistics h4{
-  margin: 0px;
-  padding: 10px 20px;
-  background-color: $background-grey;
+  h4{
+    margin: 0px;
+    padding: 10px 20px;
+    background-color: $background-grey;
+  }
+
+  .span-3 { 
+    max-width: 20%;
+    height: 100px;
+    text-align: center;
+    border: 1px solid $border-grey;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    .data{ 
+      margin-top: 15px;
+      font-size: large;
+    }
+  }
 }
-
-.page-statistics .span-3 { 
-  max-width: 20%;
-  height: 100px;
-  text-align: center;
-  border: 1px solid $border-grey;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-
-.page-statistics .span-3 .data{ margin-top: 15px; }
