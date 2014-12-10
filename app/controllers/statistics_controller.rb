@@ -4,9 +4,10 @@
  
 class StatisticsController < ApplicationController
  
-  respond_to :html, json
+  respond_to :html, :json
  
   def statistics
+<<<<<<< HEAD
     self.datas
     respond_to do |format|
     format.json { render :json => StatisticsPresenter.new }
@@ -24,6 +25,23 @@ class StatisticsController < ApplicationController
      @as_services = @@result['services']
      @css_framework = :bootstrap; render :template=>'publics/statistics', :layout => "application"
     }
+=======
+   # Init This part is going to need to be moved in a separate presenter, WIP
+   self.datas
+   @as_name = @@result['name']
+   @as_network = @@result['network']
+   @as_users = @@result['total_users']
+   @as_active_users = @@result['active_users_halfyear']
+   @as_monthly_users =  @@result['active_users_monthly']
+   @as_posts = @@result['local_posts']
+   @as_comments = @@result['local_comments']
+   @as_version = @@result['version']
+   @as_registrations = @@result['registrations_open']
+   @as_services = @@result['services']
+   respond_to do |format|
+    format.json { render :json => StatisticsPresenter.new }
+    format.html{ @css_framework = :bootstrap; render :template=>'publics/statistics', :layout => "application" }
+>>>>>>> 60c1afa7c5d5249e3524bea5f5d82757ea578331
    end
   end
 
