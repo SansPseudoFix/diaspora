@@ -1,0 +1,16 @@
+.page-statistics h1{ text-align: center; }
+
+.page-statistics h4{
+  margin: 0px;
+  padding: 10px 20px;
+  background-color: #E6EFFB;
+}
+
+.page-statistics .span-3 { 
+  max-width: 20%;
+  height: 150px;
+  text-align: center;
+  border: 1px solid $border-grey;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
