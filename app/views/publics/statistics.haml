@@ -10,9 +10,15 @@
     %h1
       = t('_statistics')  
     
-    - @data.each do |key, value| 
+    - @data.each do |key, value|
       .span-3
         %h3
-          = t("statistics.#{key}")
-        .data
-          = value
+        - if key == "services"
+          - key.each do |k, v|
+              - "${t('statistics.is_connected_with")} #{k}"
+            .data
+              - v ? t('statistics.connected') : t('statistics.not_connected')
+        - else
+            = t("statistics.#{key}")
+          .data
+            = value
