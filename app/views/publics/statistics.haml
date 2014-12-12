@@ -15,10 +15,9 @@
         %h3
         - if key == "services"
           - value.each do |k, v|
-              = t('statistics.is_connected_with')
-              k
-            .data
-              - v ? t('statistics.connected') : t('statistics.not_connected')
+            - "#{t('statistics.is_connected_with')} #{k}"
+          .data
+            - v ? t('statistics.connected') : t('statistics.not_connected')
         - else
             = t("statistics.#{key}")
           .data
