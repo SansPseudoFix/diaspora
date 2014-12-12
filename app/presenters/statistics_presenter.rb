@@ -2,7 +2,9 @@ class StatisticsPresenter
 
   def as_json(options={})
     result = raw_data
-    result["services"] = services_as_map
+    result["services"] = Configuration::KNOWN_SERVICES.select {
+      |service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
+    result.merge(services_as_map)
 
     result
   end
