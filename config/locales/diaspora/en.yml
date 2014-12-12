@@ -1377,5 +1377,6 @@ en:
     local_comments: "Local comments"
     version: "Version"
     registrations_open: "Registrations"
-    services: "Services"
-    
+    is_service_connected: "Connection to"
+    enabled: "Enabled"
+    disabled: "None"
