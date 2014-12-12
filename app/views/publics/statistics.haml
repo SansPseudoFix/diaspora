@@ -23,6 +23,6 @@
     - @services.each do |key, value| 
       .span-3
         %h3
-          = "t('statistics.is_service_connected') #{key}"
+          = "t('statistics.is_service_connected') #{key.capitalize}"
         .data
           = value
