@@ -9,49 +9,10 @@
   .row-fluid
     %h1
       = t('_statistics')  
-      
-    .span-3
-      %h3
-        = t('statistics.name')
-      .data
-        = @as_name
-    .span-3
-      %h3
-        = t('statistics.network')
-      .data
-        = @as_network
-    .span-3
-      %h3
-        = t('statistics.users')
-      .data
-        = @as_users
-    .span-3
-      %h3
-        = t('statistics.active_users')
-      .data
-        = @as_active_users
-    .span-3
-      %h3
-        = t('statistics.monthly_users')
-      .data
-        = @as_monthly_users
-    .span-3
-      %h3
-        = t('statistics.posts')
-      .data
-        = @as_posts
-    .span-3
-      %h3
-        = t('statistics.comments')
-      .data
-        = @as_comments
-    .span-3
-      %h3
-        = t('statistics.version')
-      .data
-        = @as_version
-    .span-3
-      %h3
-        = t('statistics.registrations')
-      .data
-        = @as_registrations
+    
+    - @data.each do |key, value| 
+      .span-3
+        %h3
+          = t("statistics.#{key}")
+        .data
+          = value

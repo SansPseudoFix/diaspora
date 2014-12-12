@@ -1370,10 +1370,12 @@ en:
   statistics:
     name: "Name"
     network: "Network"
-    users: "Total users"
-    active_users: "Active users half year"
-    monthly_users: "Active users monthly"
-    posts: "Local posts"
-    comments: "Local comments"
+    total_users: "Total users"
+    active_users_halfyear: "Active users half year"
+    active_users_monthly: "Active users monthly"
+    local_posts: "Local posts"
+    local_comments: "Local comments"
     version: "Version"
-    registrations: "Registrations"
+    registrations_open: "Registrations"
+    services: "Services"
+    
