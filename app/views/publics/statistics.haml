@@ -16,9 +16,9 @@
         - if key == "services"
           - value.each do |k, v|
             - "#{t('statistics.is_connected_with')} #{k}"
-          .data
+            .data
             - v ? t('statistics.connected') : t('statistics.not_connected')
         - else
-            = t("statistics.#{key}")
+          = t("statistics.#{key}")
           .data
-            = value
+          = value
