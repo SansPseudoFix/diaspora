@@ -31,8 +31,7 @@ class StatisticsPresenter
   end
   
   def services_as_map
-    services = []
-    services = Configuration::KNOWN_SERVICES.select {|service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
+    services = {}
     Configuration::KNOWN_SERVICES.each do |service, options|
       services[service.to_s] = AppConfig["services.#{service}.enable"]
     end
