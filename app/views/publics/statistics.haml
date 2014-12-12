@@ -16,13 +16,14 @@
           = t("statistics.#{key}")
         .data
           = value
-    
+
+  .row-fluid
     %h1
       = t('statistics.services')
     
     - @services.each do |key, value| 
       .span-3
         %h3
-          = "t('statistics.is_service_connected') #{key.capitalize}"
+          = "#{t('statistics.is_service_connected')} #{key.capitalize}"
         .data
           = value

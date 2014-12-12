@@ -4,8 +4,19 @@ class StatisticsPresenter
     result = raw_data
     result["services"] = Configuration::KNOWN_SERVICES.select {
       |service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
-    result.merge(services_as_map)
+    result = result.merge(services_as_map(false))
 
+    result
+  end
+  
+  def as_simple_map
+    result = raw_data
+    if result['registrations_open']
+      result['registrations_open'] = I18n.t('statistics.opened')
+    else
+      result['registrations_open'] = I18n.t('statistics.closed')
+    end
+    
     result
   end
   
@@ -14,8 +25,7 @@ class StatisticsPresenter
       'name' => AppConfig.settings.pod_name,
       'network' => "Diaspora",
       'version' => AppConfig.version_string,
-      'registrations_open' => AppConfig.settings.enable_registrations,
-      'services' => []
+      'registrations_open' => AppConfig.settings.enable_registrations
     }
     if AppConfig.privacy.statistics.user_counts?
       result['total_users'] = User.count
@@ -32,15 +42,18 @@ class StatisticsPresenter
     result
   end
   
-  def services_as_map
-    service_list = Configuration::KNOWN_SERVICES.select {
-      |service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
-    services = {}
+  def services_as_map(for_html)
+    result = {}
     Configuration::KNOWN_SERVICES.each do |service, options|
-      services[service.to_s] = AppConfig["service_list.#{service}.enable"]
+      enabled = AppConfig["services.#{service}.enable"]
+      if for_html
+	result[service.to_s] = enabled ? I18n.t('statistics.enabled') : I18n.t('statistics.disabled')
+      else
+	result[service.to_s] = enabled
+      end
     end
     
-    services
+    result
   end
   
   def local_posts
@@ -50,5 +63,4 @@ class StatisticsPresenter
   def local_comments
     Comment.joins(:author).where("owner_id IS NOT null").count
   end
-
 end

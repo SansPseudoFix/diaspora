@@ -1370,6 +1370,7 @@ en:
   statistics:
     name: "Name"
     network: "Network"
+    services: "Services available"
     total_users: "Total users"
     active_users_halfyear: "Active users half year"
     active_users_monthly: "Active users monthly"
@@ -1380,4 +1381,5 @@ en:
     is_service_connected: "Connection to"
     enabled: "Enabled"
     disabled: "None"
-    services: "Services available"
+    opened: "Opened"
+    closed: "Closed"
