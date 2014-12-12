@@ -8,7 +8,7 @@
   
   .row-fluid
     %h1
-      = t('_statistics')  
+      = t('_statistics')
     
     - @raw_data.each do |key, value| 
       .span-3
@@ -16,6 +16,9 @@
           = t("statistics.#{key}")
         .data
           = value
+    
+    %h1
+      = t('statistics.services')
     
     - @services.each do |key, value| 
       .span-3
