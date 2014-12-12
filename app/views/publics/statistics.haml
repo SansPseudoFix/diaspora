@@ -15,7 +15,7 @@
         %h3
         - if key == "services"
           - key.each do |k, v|
-              - "${t('statistics.is_connected_with')} #{k}"
+              - "#{t('statistics.is_connected_with')} #{k}"
             .data
               - v ? t('statistics.connected') : t('statistics.not_connected')
         - else
