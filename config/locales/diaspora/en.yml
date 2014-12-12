@@ -1378,4 +1378,6 @@ en:
     version: "Version"
     registrations_open: "Registrations"
     services: "Services"
-    
+    is_connected_with: "Connection with"
+    connected: "Enabled"
+    not_connected: "None"
