@@ -1,6 +1,13 @@
 class StatisticsPresenter
 
   def as_json(options={})
+    result = raw_data
+    result["services"] = services_as_map
+
+    result
+  end
+  
+  def raw_data
     result = {
       'name' => AppConfig.settings.pod_name,
       'network' => "Diaspora",
@@ -19,14 +26,19 @@ class StatisticsPresenter
     if AppConfig.privacy.statistics.comment_counts?
       result['local_comments'] = self.local_comments
     end
-    result["services"] = Configuration::KNOWN_SERVICES.select {|service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
+    
+    result
+  end
+  
+  def services_as_map
+    services = Configuration::KNOWN_SERVICES.select {|service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
     Configuration::KNOWN_SERVICES.each do |service, options|
       result[service.to_s] = AppConfig["services.#{service}.enable"]
     end
-
-    result
+    
+    services
   end
-
+  
   def local_posts
     Post.where(:type => "StatusMessage").joins(:author).where("owner_id IS NOT null").count
   end
