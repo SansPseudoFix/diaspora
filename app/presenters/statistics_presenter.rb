@@ -1,12 +1,31 @@
 class StatisticsPresenter
 
   def as_json(options={})
+    result = raw_data
+    result["services"] = Configuration::KNOWN_SERVICES.select {
+      |service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
+    result = result.merge(services_as_map(false))
+
+    result
+  end
+  
+  def as_simple_map
+    result = raw_data
+    if result['registrations_open']
+      result['registrations_open'] = I18n.t('statistics.opened')
+    else
+      result['registrations_open'] = I18n.t('statistics.closed')
+    end
+    
+    result
+  end
+  
+  def raw_data
     result = {
       'name' => AppConfig.settings.pod_name,
       'network' => "Diaspora",
       'version' => AppConfig.version_string,
-      'registrations_open' => AppConfig.settings.enable_registrations,
-      'services' => []
+      'registrations_open' => AppConfig.settings.enable_registrations
     }
     if AppConfig.privacy.statistics.user_counts?
       result['total_users'] = User.count
@@ -19,14 +38,24 @@ class StatisticsPresenter
     if AppConfig.privacy.statistics.comment_counts?
       result['local_comments'] = self.local_comments
     end
-    result["services"] = Configuration::KNOWN_SERVICES.select {|service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
-    Configuration::KNOWN_SERVICES.each do |service, options|
-      result[service.to_s] = AppConfig["services.#{service}.enable"]
-    end
-
+    
     result
   end
-
+  
+  def services_as_map(for_html)
+    result = {}
+    Configuration::KNOWN_SERVICES.each do |service, options|
+      enabled = AppConfig["services.#{service}.enable"]
+      if for_html
+	result[service.to_s] = enabled ? I18n.t('statistics.enabled') : I18n.t('statistics.disabled')
+      else
+	result[service.to_s] = enabled
+      end
+    end
+    
+    result
+  end
+  
   def local_posts
     Post.where(:type => "StatusMessage").joins(:author).where("owner_id IS NOT null").count
   end
@@ -34,5 +63,4 @@ class StatisticsPresenter
   def local_comments
     Comment.joins(:author).where("owner_id IS NOT null").count
   end
-
 end

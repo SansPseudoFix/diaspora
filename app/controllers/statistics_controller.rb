@@ -7,7 +7,8 @@ class StatisticsController < ApplicationController
  
   def statistics
    @statistics_presenter = StatisticsPresenter.new
-   @data = @statistics_presenter.as_json
+   @raw_data = @statistics_presenter.as_simple_map
+   @services = @statistics_presenter.services_as_map(true)
    respond_to do |format|
     format.json { render :json => @statistics_presenter }
     format.html{ @css_framework = :bootstrap; render :template=>'publics/statistics', :layout => "application" }
