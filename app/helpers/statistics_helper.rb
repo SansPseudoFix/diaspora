@@ -1,0 +1,21 @@
+#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
+module StatisticsHelper
+  def registrations_status statistics
+    if statistics.open_registrations?
+      I18n.t('statistics.opened')
+    else
+      I18n.t('statistics.closed')
+    end
+  end
+
+  def service_status service, available_services
+    if available_services.include? service
+      I18n.t('statistics.enabled')
+    else
+      I18n.t('statistics.disabled')
+    end
+  end
+end
