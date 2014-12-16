@@ -1366,18 +1366,18 @@ en:
       default: "The secret code did not match with the image"
       user: "The secret image and code were different"
       failed: "Human verification failed"
-  
+
   statistics:
     name: "Name"
     network: "Network"
-    services: "Services available"
+    services: "Available services"
     total_users: "Total users"
     active_users_halfyear: "Active users half year"
     active_users_monthly: "Active users monthly"
     local_posts: "Local posts"
     local_comments: "Local comments"
     version: "Version"
-    registrations_open: "Registrations"
+    registrations: "Registrations"
     is_service_connected: "Connection to"
     enabled: "Enabled"
     disabled: "None"

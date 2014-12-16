@@ -1,66 +1,124 @@
+#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
 class StatisticsPresenter
 
-  def as_json(options={})
-    result = raw_data
-    result["services"] = Configuration::KNOWN_SERVICES.select {
-      |service| AppConfig["services.#{service}.enable"]}.map(&:to_s)
-    result = result.merge(services_as_map(false))
+  def as_json options={}
+    base_data.merge(user_counts)
+             .merge(post_counts)
+             .merge(comment_counts)
+             .merge(services)
+             .merge(legacy_services) # Remove in 0.6
+  end
 
-    result
-  end
-  
-  def as_simple_map
-    result = raw_data
-    if result['registrations_open']
-      result['registrations_open'] = I18n.t('statistics.opened')
-    else
-      result['registrations_open'] = I18n.t('statistics.closed')
-    end
-    
-    result
-  end
-  
-  def raw_data
-    result = {
-      'name' => AppConfig.settings.pod_name,
-      'network' => "Diaspora",
-      'version' => AppConfig.version_string,
-      'registrations_open' => AppConfig.settings.enable_registrations
+  def base_data
+    {
+      'name' => name,
+      'network' => 'Diaspora',
+      'version' => version,
+      'registrations_open' => open_registrations?,
+      'services' => available_services
     }
-    if AppConfig.privacy.statistics.user_counts?
-      result['total_users'] = User.count
-      result['active_users_halfyear'] = User.halfyear_actives.count
-      result['active_users_monthly'] = User.monthly_actives.count
-    end
-    if AppConfig.privacy.statistics.post_counts?
-      result['local_posts'] = self.local_posts
-    end
-    if AppConfig.privacy.statistics.comment_counts?
-      result['local_comments'] = self.local_comments
-    end
-    
-    result
   end
-  
-  def services_as_map(for_html)
-    result = {}
-    Configuration::KNOWN_SERVICES.each do |service, options|
-      enabled = AppConfig["services.#{service}.enable"]
-      if for_html
-	result[service.to_s] = enabled ? I18n.t('statistics.enabled') : I18n.t('statistics.disabled')
-      else
-	result[service.to_s] = enabled
-      end
-    end
-    
-    result
+
+  def name
+    AppConfig.settings.pod_name
   end
-  
+
+  def version
+    AppConfig.version_string
+  end
+
+  def open_registrations?
+    AppConfig.settings.enable_registrations
+  end
+
+  def user_counts
+    return {} unless expose_user_counts?
+    {
+      'total_users' => total_users,
+      'active_users_monthly' => monthly_users,
+      'active_users_halfyear' => halfyear_users
+    }
+  end
+
+  def expose_user_counts?
+    AppConfig.privacy.statistics.user_counts?
+  end
+
+  def total_users
+    @total_users ||= User.joins(:person)
+                         .where(people: {closed_account: false})
+                         .where.not(username: nil)
+  end
+
+  def monthly_users
+    @monthly_users ||= User.halfyear_actives.count
+  end
+
+  def halfyear_users
+    @halfyear_users ||= User.monthly_actives.count
+  end
+
+  def post_counts
+    return {} unless expose_posts_counts?
+    {
+      'local_posts' => local_posts
+    }
+  end
+
   def local_posts
-    Post.where(:type => "StatusMessage").joins(:author).where("owner_id IS NOT null").count
+    @local_posts ||= Post.where(type: "StatusMessage")
+                         .joins(:author)
+                         .where("owner_id IS NOT null")
+                         .count
   end
+
+  def expose_posts_counts?
+    AppConfig.privacy.statistics.post_counts?
+  end
+
+  def comment_counts
+    return {} unless expose_comment_counts?
+    {
+      'local_comments' => local_comments
+    }
+  end
+
+  def expose_comment_counts?
+    AppConfig.privacy.statistics.comment_counts?
+  end
+
 
   def local_comments
-    Comment.joins(:author).where("owner_id IS NOT null").count
+    @local_comments ||= Comment.joins(:author)
+                               .where("owner_id IS NOT null")
+                               .count
   end
+
+  def all_services_helper
+    result = {}
+    Configuration::KNOWN_SERVICES.each {|service, options|
+      result[service.to_s] = AppConfig["services.#{service}.enable"]
+    }
+    result
+  end
+
+  def all_services
+    @all_services ||= all_services_helper
+  end
+
+  def available_services
+    Configuration::KNOWN_SERVICES.select {|service|
+      AppConfig["services.#{service}.enable"]
+    }.map(&:to_s)
+  end
+
+  def legacy_services
+    Configuration::KNOWN_SERVICES.each_with_object({}) {|service, result|
+      result[service.to_s] = AppConfig["services.#{service}.enable"]
+    }
+  end
+
 end
