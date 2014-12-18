@@ -8,7 +8,7 @@ class StatisticsPresenter
     base_data.merge(user_counts)
              .merge(post_counts)
              .merge(comment_counts)
-             .merge(services)
+             .merge(all_services)
              .merge(legacy_services) # Remove in 0.6
   end
 
@@ -51,6 +51,7 @@ class StatisticsPresenter
     @total_users ||= User.joins(:person)
                          .where(people: {closed_account: false})
                          .where.not(username: nil)
+                         .count
   end
 
   def monthly_users
