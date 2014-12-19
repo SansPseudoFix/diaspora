@@ -11,10 +11,12 @@
   = render 'statistics/statistic', name: t('statistics.registrations'), value: registrations_status(@statistics)
   - if @statistics.expose_user_counts?
     = render 'statistics/statistic', name: t('statistics.total_users'), value: @statistics.total_users
-  = render 'statistics/statistic', name: t('statistics.active_users_halfyear'), value: @statistics.halfyear_users
-  = render 'statistics/statistic', name: t('statistics.active_users_monthly'), value: @statistics.monthly_users
-  = render 'statistics/statistic', name: t('statistics.local_posts'), value: @statistics.local_posts
-  = render 'statistics/statistic', name: t('statistics.local_comments'), value: @statistics.local_comments
+    = render 'statistics/statistic', name: t('statistics.active_users_halfyear'), value: @statistics.halfyear_users
+    = render 'statistics/statistic', name: t('statistics.active_users_monthly'), value: @statistics.monthly_users
+  - if @statistics.expose_posts_counts?
+    = render 'statistics/statistic', name: t('statistics.local_posts'), value: @statistics.local_posts
+  - if @statistics.expose_comment_counts?
+    = render 'statistics/statistic', name: t('statistics.local_comments'), value: @statistics.local_comments
 .row-fluid
   %h1
     = t('statistics.services')
