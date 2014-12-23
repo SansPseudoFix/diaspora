@@ -21,4 +21,4 @@
   %h1
     = t('statistics.services')
   - Configuration::KNOWN_SERVICES.each do |service|
-    = render 'statistics/statistic', name: "#{t('statistics.is_service_connected')} #{service.capitalize}", value: service_status(service, @statistics.available_services)
+    = render 'statistics/statistic', name: "#{service.capitalize}", value: service_status(service, @statistics.available_services)
