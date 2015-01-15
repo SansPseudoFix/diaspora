@@ -1,0 +1,24 @@
+-#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+-#   licensed under the Affero General Public License version 3 or later.  See
+-#   the COPYRIGHT file.
+%header
+
+.row-fluid
+  %h1
+    = t('_statistics')
+  = render 'statistics/statistic', name: t('statistics.name'), value: @statistics.name
+  = render 'statistics/statistic', name: t('statistics.version'), value: @statistics.version
+  = render 'statistics/statistic', name: t('statistics.registrations'), value: registrations_status(@statistics)
+  - if @statistics.expose_user_counts?
+    = render 'statistics/statistic', name: t('statistics.total_users'), value: @statistics.total_users
+    = render 'statistics/statistic', name: t('statistics.active_users_halfyear'), value: @statistics.halfyear_users
+    = render 'statistics/statistic', name: t('statistics.active_users_monthly'), value: @statistics.monthly_users
+  - if @statistics.expose_posts_counts?
+    = render 'statistics/statistic', name: t('statistics.local_posts'), value: @statistics.local_posts
+  - if @statistics.expose_comment_counts?
+    = render 'statistics/statistic', name: t('statistics.local_comments'), value: @statistics.local_comments
+.row-fluid
+  %h1
+    = t('statistics.services')
+  - Configuration::KNOWN_SERVICES.each do |service|
+    = render 'statistics/statistic', name: "#{service.capitalize}", value: service_status(service, @statistics.available_services)

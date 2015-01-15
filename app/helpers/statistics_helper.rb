@@ -5,7 +5,7 @@
 module StatisticsHelper
   def registrations_status statistics
     if statistics.open_registrations?
-      I18n.t('statistics.opened')
+      I18n.t('statistics.open')
     else
       I18n.t('statistics.closed')
     end
