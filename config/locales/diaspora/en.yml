@@ -1379,6 +1379,6 @@ en:
     version: "Version"
     registrations: "Registrations"
     enabled: "Enabled"
-    disabled: "None"
+    disabled: "No connection"
     open: "Open"
     closed: "Closed"
