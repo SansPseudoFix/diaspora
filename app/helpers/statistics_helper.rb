@@ -18,4 +18,12 @@ module StatisticsHelper
       I18n.t('statistics.disabled')
     end
   end
+
+  def service_class service, available_services
+    if available_services.include? service
+      "serv-enabled"
+    else
+      "serv-disabled"
+    end
+  end
 end
