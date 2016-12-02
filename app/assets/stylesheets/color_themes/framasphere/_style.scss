@@ -1,0 +1,141 @@
+/* Global */
+.btn-primary {
+  background-color: #6a5687 !important;
+  border-color: #6a5687 !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #635182 !important;
+    border-color: #635182 !important;
+  }
+}
+.btn-success {
+  background-color: #8E9C48 !important;
+  border-color: #8E9C48 !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #B3CC66 !important;
+    border-color: #B3CC66 !important;
+  }
+}
+.btn-danger {
+  background-color: #cc2d18 !important;
+  border-color: #cc2d18 !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #b82e12 !important;
+    border-color: #b82e12 !important;
+  }
+}
+
+.alert-success {
+  color: #304219 !important;
+  background-color: #E3EBC7 !important;
+  border-color: #C0D481 !important;
+}
+
+.alert-danger {
+  color: #AB2909 !important;
+  background-color: #fde0dc !important;
+  border-color: #E0B3A8 !important;
+}
+
+.list-group-item.active {
+  background-color: #6a5687 !important;
+  border-color: #6a5687 !important;
+}
+
+.list-group-item:hover,
+.list-group-item:focus  {
+  background-color: #677835 !important;
+  border-color: #677835 !important;
+}
+
+/* Header */
+.navbar-fixed-top {
+  background-color: #FAFAFA !important;
+  #navbar-collapse {
+    a {
+      color: #555555;
+      &:hover {
+        color: #333333;
+      }
+    }
+    #notification-dropdown .dropdown-menu {
+      .notifications .media .media-body {
+        a {
+          text-decoration: underline !important;
+          text-decoration-style: dotted !important;
+          &:hover {
+            text-decoration: none !important;
+          }
+        }
+      }
+      .view_all {
+        background-color: #8E9C48;
+      }
+    }
+  }
+  .badge-important {
+    background-color: #8E9C48 !important;
+  }
+  .navbar-brand {
+    padding: 5px 15px;
+    &before {
+      display: block;
+    }
+    #framasoft-logo {
+      display: inline;
+      img {
+        width: 42px;
+        height: 42px;
+      }
+    }
+    #podname {
+      display: inline-block;
+      .frama {
+        color: #6A5687;
+        font-family: "DejaVu Sans","Verdana","Geneva","sans serif";
+      }
+      .vert {
+        color: #8E9C48;
+        margin-left: -6px;
+        font-family: "DejaVu Sans","Verdana","Geneva","sans serif";
+      }
+    }
+  }
+  input[type="search"]:not(.active) {
+    background: #FAFAFA !important;
+    border-color: #333333;
+  }
+
+  /* menu */
+  #user_menu {
+    &.open .dropdown-toggle {
+      background-color: #6a5687 !important;
+      color: #FAFAFA !important;
+    }
+    .dropdown-menu {
+      background-color: #FAFAFA !important;
+      li > a {
+        &:hover {
+          background-color: #677835 !important;
+        }
+      }
+    }
+  }
+}
+
+/* Navbar (left) */
+.left-navbar {
+  .selected > .hoverable{
+    background-color: #6a5687 !important;
+    border-color: #6a5687 !important;
+  }
+  .hoverable:hover {
+    background-color: #677835 !important;
+    border-color: #677835 !important;
+  }
+}

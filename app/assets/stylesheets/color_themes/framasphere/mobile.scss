@@ -1,0 +1,15 @@
+@import "style";
+@import "mobile/mobile";
+
+.navbar-inverse {
+  [class^="entypo-"],
+  [class^="diaspora-custom-"] {
+    color: #555555 !important;
+    &:active {
+      color: #333333 !important;
+    }
+  }
+  .navbar-toggle .icon-bar {
+    background-color: #555555 !important;
+  }
+}
