@@ -1,3 +1,26 @@
+<style type="text/css">
+/*le logo et Framasphere bicolor forcé quelque soit le thème*/
+    .navbar-brand {
+          padding: 5px 15px;
+    }
+
+    .navbar-brand { display: block; }
+    #framasoft-logo {
+          display: inline;
+    }
+    #podname {
+          display: inline-block;
+    }
+    .frama {
+          color: #6A5687;
+          font-family: "DejaVu Sans","Verdana","Geneva","sans serif";
+          }
+    .vert {
+          color: #8E9C48;
+          margin-left: -6px;
+          font-family: "DejaVu Sans","Verdana","Geneva","sans serif";
+    }
+</style>
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="row">
@@ -10,7 +33,14 @@
             <span class="icon-bar"></span>
           </button>
           <a href="/stream" class="navbar-brand" data-stream-title="{{t "my_stream"}}">
-            {{ podname }}
+            <div id="framasoft-logo">
+              <img src="/assets/themes/framasoft/logo_rond.png" alt="Header logo" width="42px" height="42px">
+            </div>
+            <!-- {{ podname }} -->
+            <div id="podname">
+              <span class="frama">Frama</span>
+              <span class="vert">sphere</span>
+            </div>
           </a>
           <ul class="nav nav-badges visible-sm">
             <li>
