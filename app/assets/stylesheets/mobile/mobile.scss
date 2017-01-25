@@ -899,3 +899,8 @@ select#aspect_ids_ {
 .form-control:active, .form-control:focus { border-color: #999999; }
 
 .tag_following_action { margin: 5px 0 10px 0; }
+
+#reports button, html input {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
