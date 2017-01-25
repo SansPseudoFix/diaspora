@@ -16,6 +16,7 @@
 @import "mobile/stream_element";
 @import "mobile/comments";
 @import 'mobile/openid_connect_error_page';
+@import 'mobile/admins';
 
 @import 'typography';
 
@@ -899,8 +900,3 @@ select#aspect_ids_ {
 .form-control:active, .form-control:focus { border-color: #999999; }
 
 .tag_following_action { margin: 5px 0 10px 0; }
-
-#reports button, html input {
-  margin-bottom: 5px;
-  margin-top: 5px;
-}
