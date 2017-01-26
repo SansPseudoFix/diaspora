@@ -28,7 +28,7 @@
             class: "btn btn-danger btn-block"
 
         - unless user.closed_account?
-          - unless user.access_locked?
+          - if !user.access_locked?
             = link_to t("admins.user_search.lock_account"), admin_lock_account_path(user), method: :post,
               data: {confirm: t("admins.user_search.are_you_sure_lock_account")},
               class: "btn btn-danger btn-block"

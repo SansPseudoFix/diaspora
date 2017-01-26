@@ -29,7 +29,7 @@
 
     .more_invites.col-md-4
       %h3= t("shared.invitations.invites")
-      #add-invites-section.clearfix
+      .clearfix#add-invites-section
         != t(".you_currently", count: current_user.invitation_code.count,
             link: link_to(t(".add_invites"), add_invites_path(current_user.invitation_code),
             class: "btn btn-link pull-right"))
