@@ -4,8 +4,5 @@
       %h2
         = t(".pod_network")
 
-      #pod-alerts
-        / filled by backbonejs
-
-      #pod-list
-        / filled by backbonejs
+      .alert.alert-warning
+        = link_to t(".pod_desktop_view"), toggle_mobile_path
