@@ -6,13 +6,12 @@
         = person_image_tag(user.person, size: :thumb_small)
 
   .media-body.row
-    .pull-right
-      %span.label.label-default
-        = t(".id")
-        = user.id
-      %span.label.label-info
-        = t(".guid")
-        = user.person.guid if user.person
+    %span.label.label-default
+      = t(".id")
+      = user.id
+    %span.label.label-info
+      = t(".guid")
+      = user.person.guid if user.person
 
     %h4.media-heading
       = user.person.name if user.person
