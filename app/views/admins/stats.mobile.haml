@@ -1,18 +1,1 @@
-.col-md-9
-  %h1= t(".usage_statistic")
-
-  %div
-    = form_tag("/admins/stats", method: "get", class: "form-inline") do
-      %select.form-control{name: "range"}
-        %option{value: "daily", selected: ("selected" if params[:range] == "daily")}
-          = t(".daily")
-        %option{value: "week", selected: ("selected" if params[:range] == "week")}
-          = t(".week")
-        %option{value: "2weeks", selected: ("selected" if params[:range] == "2weeks")}
-          = t(".2weeks")
-        %option{value: "month", selected: ("selected" if params[:range] == "month")}
-          = t(".month")
-
-      = submit_tag t(".go"), class: "btn btn-primary btn-block"
-
-  = render partial: "admins/stats"
+= render partial: "admins/stats"
