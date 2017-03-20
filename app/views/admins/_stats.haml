@@ -1,21 +1,24 @@
 .col-md-9
   %h1= t(".usage_statistic")
 
-  .pull-right.block-admin
-    = form_tag("/admins/stats", method: "get", class: "form-inline") do
-      %select.form-control{name: "range"}
-        %option{value: "daily", selected: ("selected" if params[:range] == "daily")}
-          = t(".daily")
-        %option{value: "week", selected: ("selected" if params[:range] == "week")}
-          = t(".week")
-        %option{value: "2weeks", selected: ("selected" if params[:range] == "2weeks")}
-          = t(".2weeks")
-        %option{value: "month", selected: ("selected" if params[:range] == "month")}
-          = t(".month")
+  .row
+    = form_tag("/admins/stats", method: "get", class: "form-inline segement-selection") do
+      .col-md-2.col-md-push-9
+        %select.form-control{name: "range"}
+          %option{value: "daily", selected: ("selected" if params[:range] == "daily")}
+            = t(".daily")
+          %option{value: "week", selected: ("selected" if params[:range] == "week")}
+            = t(".week")
+          %option{value: "2weeks", selected: ("selected" if params[:range] == "2weeks")}
+            = t(".2weeks")
+          %option{value: "month", selected: ("selected" if params[:range] == "month")}
+            = t(".month")
+      .col-md-1.col-md-push-9
+        = submit_tag t(".go"), class: "btn btn-primary btn-block"
 
-      = submit_tag t(".go"), class: "btn btn-primary block-admin"
-  %h3
-    != t("admins.stats.display_results", segment: content_tag(:strong, @segment))
+    .col-md-9.col-md-pull-3
+      %h3
+        != t("admins.stats.display_results", segment: content_tag(:strong, @segment))
 
   .row
     - %i(posts comments aspect_memberships users).each do |name|

@@ -19,13 +19,12 @@
             = f.text_field :guid, class: "form-control"
 
         .form-group
-          .col-sm-offset-2.col-sm-10
+          .col-md-offset-2.col-md-8.col-sm-12
             = f.label :under13 do
               = f.check_box :under13
               = t(".under_13")
-        .form-group
-          .clearfix.col-sm-12
-            = submit_tag t("admins.stats.go"), class: "btn btn-primary pull-right block-admin"
+          .col-md-2.col-sm-12
+            = submit_tag t("admins.stats.go"), class: "btn btn-block btn-primary"
 
   .row
     .col-md-12

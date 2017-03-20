@@ -1,4 +1,3 @@
-
 %li.user.media
   .media-body.row
     .col-md-1
@@ -30,7 +29,7 @@
             %dd= user.person.diaspora_handle
             %dt= t(".last_seen")
             %dd= user.last_seen || t(".unknown")
-            -if user.invited_by.present?
+            - if user.invited_by.present?
               %dt= t(".invite_token")
               %dd= invite_code_url(user.invited_by.invitation_code)
             %dt= t(".account_closed")
@@ -58,30 +57,29 @@
             %dt= t("people.profile_sidebar.bio")
             %dd= user.person.profile.bio
 
-        .col-md-4.block-admin
-          .actions.pull-right
-            = link_to t("admins.user_search.view_profile"),
-              person_path(user.person),
-              class: "btn btn-default btn-block block-admin btn-xs"
-            = link_to t("admins.user_search.add_invites"),
-              add_invites_path(user.invitation_code),
-              class: "btn btn-info btn-block block-admin btn-xs"
-            - unless user.person.closed_account
-              = link_to t("admins.user_search.close_account"),
-                admin_close_account_path(user),
-                method: :post, data: {confirm: t("admins.user_search.are_you_sure")},
-                class: "btn btn-danger btn-block block-admin btn-xs"
+        .col-md-4
+          = link_to t("admins.user_search.view_profile"),
+            person_path(user.person),
+            class: "btn btn-default btn-block"
+          = link_to t("admins.user_search.add_invites"),
+            add_invites_path(user.invitation_code),
+            class: "btn btn-info btn-block"
+          - unless user.person.closed_account
+            = link_to t("admins.user_search.close_account"),
+              admin_close_account_path(user),
+              method: :post, data: {confirm: t("admins.user_search.are_you_sure")},
+              class: "btn btn-danger btn-block"
 
-            - unless user.closed_account?
-              - unless user.access_locked?
-                = link_to t("admins.user_search.lock_account"),
-                  admin_lock_account_path(user),
-                  method: :post,
-                  data: {confirm: t("admins.user_search.are_you_sure_lock_account")},
-                  class: "btn btn-danger btn-block block-admin btn-xs"
-              - else
-                = link_to t("admins.user_search.unlock_account"),
+          - unless user.closed_account?
+            - if user.access_locked?
+              = link_to t("admins.user_search.unlock_account"),
                 admin_unlock_account_path(user),
                 method: :post,
                 data: {confirm: t("admins.user_search.are_you_sure_unlock_account")},
-                class: "btn btn-danger btn-block block-admin btn-xs"
+                class: "btn btn-danger btn-block"
+            - else
+              = link_to t("admins.user_search.lock_account"),
+                admin_lock_account_path(user),
+                method: :post,
+                data: {confirm: t("admins.user_search.are_you_sure_lock_account")},
+                class: "btn btn-danger btn-block"
